@@ -5,6 +5,6 @@ public class Main {
 		
 		System.out.println("Start Racing!!");
 		Racing r = new Racing(teamNum, distance);
-		//r.run();
+		r.run();
 	}
 }

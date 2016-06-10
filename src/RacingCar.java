@@ -2,16 +2,16 @@
 public class RacingCar {
 	public static final double hf = 0.8;
 	
-	private final int order;
+	private int order;
 	private Car car;
 	
 	private double curDist; // meter from backline
 	private double curSpd; 	// m/s
-	private boolean nitro; 	// true mean can use
-	private double distance;
+	private boolean nitro; 	// true mean can use	
 	
-	public RacingCar(int order){
-		this.order = order;
+	public RacingCar(Car car){
+		this.car = car;
+		this.order = car.getCarNumber();
 		this.curSpd = 0;
 		this.nitro = true;
 	}
@@ -20,15 +20,15 @@ public class RacingCar {
 		return this.order;
 	}
 	
-	public void setCar(Car car){
-		this.car = car;
+	public void setOrder(int order){
+		this.order = order;
 	}
 	
 	public void setLineup(double dist){
 		this.curDist = dist;
 	}
 	
-	public double getDistance(){
+	public double getCurDist(){
 		return this.curDist;
 	}
 	
@@ -36,10 +36,6 @@ public class RacingCar {
 		this.updateSpd();
 		this.updateDist();
 		
-		this.assetmemt();
-	}
-	
-	private void assetmemt(){
 		//check hf
 		//check nitro
 	}

@@ -7,11 +7,9 @@ public class RacingCarFactory {
 		ArrayList<RacingCar> rcars = new ArrayList<RacingCar>();
 		
 		for(int i = 1; i <= num; i++){
-			RacingCar rc = new RacingCar(i);
-			rc.setCar(CarFactory.createCar(i));
+			RacingCar rc = new RacingCar(CarFactory.createCar(i));			
 			rcars.add(rc);
-		}
-		
-		return (RacingCar[]) rcars.toArray();
+		}	
+		return rcars.toArray(new RacingCar[num]);
 	}
 }

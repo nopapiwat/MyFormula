@@ -23,12 +23,12 @@ public class Racing {
 		}
 	}
 	
-	/*public void run(){
+	public void run(){
 		int sec = 0;
 		this.printDetail();
 		do{
-			for(int i = 0; i < this.cars.size(); i++){
-				this.cars.get(i).update();
+			for(int i = 0; i < this.rcars.length; i++){
+				this.rcars[i].update();
 			}
 			sec += 2;
 			System.out.println("\n==== Second "+sec+" ====\n");
@@ -38,18 +38,18 @@ public class Racing {
 	}
 	
 	private void printDetail(){
-		for(int i = 0; i < this.cars.size(); i++){			
-			this.cars.get(i).printDetail();				
+		for(int i = 0; i < this.rcars.length; i++){			
+			this.rcars[i].printDetail();				
 		}
 	}
 	
 	private boolean checkUnfinish(){	
-		for(int i = 0; i < this.cars.size(); i++){
-			if(this.cars.get(i).getCurDist() < this.distance){
+		for(int i = 0; i < this.rcars.length; i++){
+			if(this.rcars[i].getCurDist() < this.distance){
 				return true;
 			}
 		}
 		return false;
-	}*/
+	}
 	
 }
