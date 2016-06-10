@@ -17,6 +17,10 @@ public class Car {
 		this.nitro = true;
 	}
 	
+	public double getCurDist(){
+		return this.curDist;
+	}
+	
 	public void update(){
 		this.updateSpd();
 		this.updateDist();
@@ -29,8 +33,11 @@ public class Car {
 		//check nitro
 	}
 	
-	private void updateSpd(){		
+	private void updateSpd(){
 		this.curSpd += this.accel*2;
+		if(this.curSpd > this.topSpd){
+			this.curSpd = this.topSpd;
+		}
 	}
 	
 	private void updateDist(){
@@ -55,6 +62,7 @@ public class Car {
 	
 	public void printDetail(){
 		System.out.println("Car "+this.number+" : Now at "+this.curDist);
+		System.out.println("        Top Speed "+this.topSpd);
 		System.out.println("        Current Speed "+this.curSpd);
 	}
 }
