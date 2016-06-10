@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Racing {
 	
-	private ArrayList<Car> cars;
+	private RacingCar[] rcars;
 	private int carNum;
 	private double distance;
 	
@@ -11,28 +11,19 @@ public class Racing {
 		this.carNum = carNum;
 		this.distance = distance;
 		
-		this.createCars(carNum);
+		this.rcars = RacingCarFactory.importRacingCars(carNum);
 		this.setLineup(distance);	
 	}
 	
-	private void createCars(int num){
-		this.cars = new ArrayList<Car>();
-		
-		for(int i = 1; i <= num; i++){
-			this.cars.add(new Car(i));
-		}
-	}
-	
-	private void setLineup(double distance){
-		int num = this.cars.size();
+	private void setLineup(double distance){		
 		double cumDist = 0;		
-		for(int i = num; i > 0; i--){
-			this.cars.get(i-1).setLineup(cumDist);
+		for(int i = this.carNum; i > 0; i--){
+			this.rcars[i-1].setLineup(cumDist);
 			cumDist += 200*(i-1);
 		}
 	}
 	
-	public void run(){
+	/*public void run(){
 		int sec = 0;
 		this.printDetail();
 		do{
@@ -40,7 +31,7 @@ public class Racing {
 				this.cars.get(i).update();
 			}
 			sec += 2;
-			System.out.println("\n==== Pass 2 sec ====\n");
+			System.out.println("\n==== Second "+sec+" ====\n");
 			this.printDetail();
 		}while(this.checkUnfinish());		
 		System.out.println("Finish in "+sec+" seconds !!!");
@@ -59,6 +50,6 @@ public class Racing {
 			}
 		}
 		return false;
-	}
+	}*/
 	
 }

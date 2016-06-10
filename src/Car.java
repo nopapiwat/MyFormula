@@ -1,55 +1,13 @@
 public class Car {
-	
-	public static final double hf = 0.8;
+		
 	private int number;
 	private double topSpd; 	// m/s
 	private double accel; 	// m/s^2
 	
-	private double curDist; // meter from backline
-	private double curSpd; 	// m/s
-	private boolean nitro; 	// true mean can use
-	
 	public Car(int num){
 		this.number = num;
 		this.setTopSpd(num);
-		this.setAccel(num);	
-		this.curSpd = 0;
-		this.nitro = true;
-	}
-	
-	public double getCurDist(){
-		return this.curDist;
-	}
-	
-	public void update(){
-		this.updateSpd();
-		this.updateDist();
-		
-		this.assetmemt();
-	}
-	
-	private void assetmemt(){
-		//check hf
-		//check nitro
-	}
-	
-	private void updateSpd(){
-		this.curSpd += this.accel*2;
-		if(this.curSpd > this.topSpd){
-			this.curSpd = this.topSpd;
-		}
-	}
-	
-	private void updateDist(){
-		this.curDist += this.curSpd*2 - 0.5*this.accel*4;
-	}
-	
-	private void useNitro(){
-		this.nitro = false;
-	}
-	
-	public void setLineup(double dist){
-		this.curDist = dist;
+		this.setAccel(num);			
 	}
 	
 	private void setTopSpd(int num){
@@ -60,9 +18,15 @@ public class Car {
 		this.accel = 2.0*num;
 	}
 	
-	public void printDetail(){
-		System.out.println("Car "+this.number+" : Now at "+this.curDist);
-		System.out.println("        Top Speed "+this.topSpd);
-		System.out.println("        Current Speed "+this.curSpd);
+	public int getCarNumber(){
+		return this.number;
+	}
+	
+	public double getTopSpd(){
+		return this.topSpd;
+	}
+	
+	public double getAccel(){
+		return this.accel;
 	}
 }
