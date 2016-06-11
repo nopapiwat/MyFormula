@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 
 public class Racing {
@@ -26,14 +27,27 @@ public class Racing {
 	public void run(){
 		int sec = 0;
 		this.printDetail();
-		do{
+		System.out.println("Start Racing!!");
+		while(this.checkUnfinish(sec)){
 			for(int i = 0; i < this.rcars.length; i++){
 				this.rcars[i].update();
 			}
 			sec += 2;
-			System.out.println("\n==== Second "+sec+" ====\n");
-			this.printDetail();
-		}while(this.checkUnfinish());		
+			
+			Arrays.sort(this.rcars);
+			for(int i = 0; i < this.rcars.length-1; i++){
+				if(Math.abs(this.rcars[i].getCurDist()-this.rcars[i+1].getCurDist()) <= 10.0){
+					this.rcars[i].inHF();
+					this.rcars[i+1].inHF();
+				}else{
+					if(this.rcars[i].isInHF()){
+						this.rcars[i].outHF();
+					}
+				}
+			}
+			this.rcars[this.rcars.length-1].useNitro();			
+		}		
+		this.printDetail();
 		System.out.println("Finish in "+sec+" seconds !!!");
 	}
 	
@@ -43,13 +57,23 @@ public class Racing {
 		}
 	}
 	
-	private boolean checkUnfinish(){	
+	private boolean checkUnfinish(int sec){
+		boolean unfin = false;
 		for(int i = 0; i < this.rcars.length; i++){
-			if(this.rcars[i].getCurDist() < this.distance){
-				return true;
+			if(!this.rcars[i].isFinish()){
+				if(this.rcars[i].getCurDist() >= this.distance){
+					this.rcars[i].setFinishTime(sec);
+					this.rcars[i].finish();
+				}else{
+					unfin = true;
+				}
 			}
 		}
-		return false;
+		return unfin;
+	}
+	
+	public RacingCar getRacingCar(int num){
+		return this.rcars[num-1];
 	}
 	
 }
