@@ -26,8 +26,9 @@ public class Racing {
 	
 	public void run(){
 		int sec = 0;
-		this.printDetail();
 		System.out.println("Start Racing!!");
+		this.printDetail(0);
+		System.out.println("||\n||\n||\n||\n||\n||\n||\n||\n||\n||\n");
 		while(this.checkUnfinish(sec)){
 			for(int i = 0; i < this.rcars.length; i++){
 				this.rcars[i].update();
@@ -47,13 +48,15 @@ public class Racing {
 			}
 			this.rcars[this.rcars.length-1].useNitro();			
 		}		
-		this.printDetail();
+		this.printDetail(1);
 		System.out.println("Finish in "+sec+" seconds !!!");
 	}
 	
-	private void printDetail(){
-		for(int i = 0; i < this.rcars.length; i++){			
-			this.rcars[i].printDetail();				
+	private void printDetail(int type){
+		for(int i = 0; i < this.rcars.length; i++){
+			if(type==0)	this.rcars[i].printStart();
+			else this.rcars[i].printFinish();
+			System.out.println();
 		}
 	}
 	

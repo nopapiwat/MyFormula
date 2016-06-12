@@ -51,7 +51,7 @@ public class RacingCar implements Comparable<RacingCar>{
 	public void inHF(){
 		this.stateHF = true;
 		this.curSpd *= RacingCar.hf;
-		System.out.println("Car "+this.car.getCarNumber()+" in HF");
+		//System.out.println("Car "+this.car.getCarNumber()+" in HF");
 	}
 	
 	public void outHF(){
@@ -94,11 +94,14 @@ public class RacingCar implements Comparable<RacingCar>{
 		this.timeToFin = time;
 	}
 	
-	public void printDetail(){
-		System.out.println("Car "+this.car.getCarNumber()+" : Now at "+this.curDist);
-		System.out.println("        Top Speed "+this.car.getTopSpd());
-		System.out.println("        Current Speed "+this.curSpd);
-		System.out.println("        Finish in "+this.timeToFin);
+	public void printFinish(){
+		System.out.println("Car "+this.car.getCarNumber()+" : Current Speed "+this.curSpd+" meters per second");		
+		System.out.println("        Finish in "+this.timeToFin+" seconds");
+	}
+	
+	public void printStart(){
+		System.out.println("Car "+this.car.getCarNumber()+" : Line up on "+this.curDist+" meters");
+		System.out.println("        Top Speed "+this.car.getTopSpd()+" meters per second");
 	}
 
 	@Override
